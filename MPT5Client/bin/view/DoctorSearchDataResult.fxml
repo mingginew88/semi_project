@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- TODO Add Nodes -->
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="searchData.DoctorSearchDataResultController">
+	<children>
+	 	<HBox layoutX="163.0" layoutY="35.0" prefHeight="100.0" prefWidth="900.0" style="-fx-background-color: #3C5A91;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+	         <padding>
+	            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+	         </padding>
+	         <children>
+	            <Label fx:id="lblName" textFill="WHITE">
+	               <font>
+	                  <Font size="36.0" />
+	               </font>
+	            </Label>
+            <Label text="님의 진단 기록" textFill="WHITE">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+	         </children>
+	     </HBox>
+      <JFXListView fx:id="vcListView" layoutY="100.0" onMouseClicked="#clickListView" prefHeight="500.0" prefWidth="200.0" />
+      <Label fx:id="lblVSTContent" layoutX="200.0" layoutY="100.0" prefHeight="35.0" prefWidth="300.0" style="-fx-background-color: #3C5A91;" text="  진료내용" textAlignment="CENTER" textFill="WHITE">
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <TextArea fx:id="tfvVisitClinic" layoutX="200.0" layoutY="135.0" prefHeight="465.0" prefWidth="300.0" />
+      <Label fx:id="lblPresContent" layoutX="500.0" layoutY="100.0" prefHeight="35.0" prefWidth="400.0" style="-fx-background-color: #3C5A91;" text="  처방내용" textAlignment="CENTER" textFill="WHITE">
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+      <TextArea fx:id="tfprescription" layoutX="500.0" layoutY="135.0" prefHeight="465.0" prefWidth="400.0" />
+      <Label fx:id="lblVSTDate" layoutY="100.0" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #3C5A91;" text="방문 진료일" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="0.0">
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
+	  </children>
+</AnchorPane>

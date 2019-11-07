@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="doctorMain">
+	<typeAlias alias="mediVO" type="VO.MedicineVO"/><!-- 의약품 -->
+	<typeAlias alias="vcVO" type="VO.VisitclinicVO"/> <!-- 방문진료 -->
+	<typeAlias alias="paVO" type="VO.PatientVO"/> <!-- 환자 -->
+	<typeAlias alias="docVO" type="VO.DoctorVO"/><!-- 의사 -->
+	<typeAlias alias="disVO" type="VO.DiseaseVO"/> <!-- 질병 -->
+	<typeAlias alias="appointVO" type="VO.AppointmentVO"/> <!-- 예약 -->
+	<typeAlias alias="preVO" type="VO.PrescriptionVO"/>  <!-- 처방 -->
+	<typeAlias alias="exVO" type="VO.ExaminationVO"/> <!-- 검사 -->
+	<typeAlias alias="msgVO" type="VO.MessageVO"/>
+	<typeAlias alias="scheVO" type="VO.ScheduleVO"/>
+	<typeAlias alias="noticeVO" type="VO.NoticeVO"/>
+	
+	<select id = "getMsg" parameterClass="Integer" resultClass="msgVo">
+		select * from message where msg_date = sysdate and msg_rc = #doctor_num#
+	</select>
+	
+	<select id = "getAllSche" parameterClass="Integer" resultClass="ScheVO">
+		select * from schedule where doctor_num = #doctor_num#
+	</select>
+	
+	<select id = "getAllAppt" parameterClass="Integer" resultClass="appointVO">
+		<![CDATA[select * from appointment where doctor_num = #doctor_num# and appt_date>=sysdate]]>	
+	</select>
+	
+	<select id = "getAllNotice" resultClass="noticeVO">
+		select * from notice
+	</select>
+	
+	<select id = "searchPaName" parameterClass="String" resultClass="String">
+		select pa_name from patient where pa_id=#pa_id#
+	</select>
+	
+	<select id="getDoctorInfo" parameterClass="Integer" resultClass="docVO">
+		SELECT 	*
+		FROM 	DOCTOR 
+		WHERE 	DOCTOR_NUM = #doctor_num#
+	</select>
+	
+	<update id="updateDoctorInfo" parameterClass="docVO">
+		UPDATE DOCTOR SET 
+				DOCTOR_ADDR = #doctor_addr#
+			   	,DOCTOR_EMAIL = #doctor_email# 
+	</update>
+	
+</sqlMap>

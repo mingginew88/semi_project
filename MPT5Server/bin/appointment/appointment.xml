@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="Appointment">
+	<typeAlias alias="appointVO" type="VO.AppointmentVO"/>
+	
+	<update id="updateAppointment" parameterClass="appointVO">
+		update appointment set appt_chid=#appt_chid#, appt_portn=#appt_portn#, appt_ip=#appt_ip#
+		 where pa_id=#pa_id# and appt_kind=#appt_kind#
+	</update>
+	
+	<select id="searchAppointmentAll" parameterClass="String" resultClass="appointVO">
+		select * from appointment where pa_id=#pa_id#
+	</select>
+	
+</sqlMap>

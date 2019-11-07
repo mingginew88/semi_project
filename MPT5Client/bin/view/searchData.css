@@ -1,0 +1,73 @@
+.table-view {
+    -fx-base: transparent;
+/*     -fx-control-inner-background: transparent; */
+    -fx-background-color: white;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color:  #3C5A91;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+/*     -fx-font-size: 14pt; */
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: black;
+    -fx-alignment: center-left; 
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: #90a7cc;
+}
+
+.table-row-cell:filled:selected,
+.table-row-cell:filled > .table-cell:selected {
+    -fx-background: #babfc9;
+    -fx-text-fill: black;
+}
+
+.pagination{
+	-fx-base:white;
+}
+.pagination .toggle-button , .mypage .button{
+	-fx-background-radius:15px;
+	-fx-padding: 0px;
+}
+.pagination .button{
+	-fx-padding: 5 15 5 16px;
+}
+.pagination .label {
+	-fx-text-fill:white;
+}
+
+ .pagination{
+	-fx-base: white;
+}
+.pagination .toggle-button , .mypage .button{
+	-fx-text-fill: #3C5A91;
+	-fx-background-radius:15px;
+	-fx-padding: 0px;
+}
+.pagination .button{
+	-fx-padding: 5 15 5 16px;
+}
+.pagination .label {
+	-fx-text-fill: #3C5A91;
+}
+.combo-box .cell{
+    -fx-background-color: transparent;
+/*     -fx-font: 16px "Arial"; */
+}
+.scroll-bar{
+	-fx-background-color:transparent;
+}
+

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+	
+	
+<sqlMap namespace="Login">
+	<typeAlias alias="PatientVo" type="VO.PatientVO"/>
+	<typeAlias alias="DoctorVo" type="VO.DoctorVO"/> 
+	<typeAlias alias="AdminVo" type="VO.AdminisratorVO"/>
+	
+	<select id="loginChkPatient" resultClass="Integer" parameterClass="PatientVo">
+		SELECT 	COUNT(*)
+		FROM 	PATIENT 
+		WHERE 	PA_ID = #pa_id# 
+		AND 	PA_PW = #pa_pw#
+	</select>
+	
+	<select id="getPatientInfo" resultClass="PatientVo" parameterClass="String">
+		SELECT 	* 
+		FROM 	PATIENT
+		WHERE 	PA_ID = #pa_id#
+	</select>
+	
+	<select id="checkPatient" resultClass="Integer" parameterClass="String">
+		SELECT 	COUNT(*) 
+		FROM 	PATIENT 
+		WHERE 	PA_ID = #pa_id#
+	</select>
+	
+	<insert id="addPatient" parameterClass="PatientVo">
+		INSERT INTO PATIENT(PA_ID
+						   ,PA_PW
+						   ,PA_NAME
+						   ,PA_GEN
+						   ,PA_REG1
+						   ,PA_REG2
+						   ,PA_ADDR
+						   ,PA_EMAIL
+						   ,PA_TEL)
+					VALUES(#pa_id#
+						   ,#pa_pw#
+						   ,#pa_name#
+						   ,#pa_gen#
+						   ,#pa_reg1#
+						   ,#pa_reg2#
+						   ,#pa_addr#
+						   ,#pa_email#
+						   ,#pa_tel#
+						   )
+	</insert>
+	
+	<select id="loginChkDoctor" resultClass="Integer" parameterClass="DoctorVo">
+		SELECT 	COUNT(*) 
+		FROM 	DOCTOR 
+		WHERE 	1=1
+		AND 	DOCTOR_NUM = #doctor_num# 
+		AND 	DOCTOR_PW = #doctor_pw#
+	</select>
+	
+	<select id="loginChkAdmin" resultClass="Integer" parameterClass="AdminVo">
+		SELECT 	COUNT(*) 
+		FROM 	ADMINISTRATOR 
+		WHERE 	ADMIN_ID = #admin_id# 
+		AND 	ADMIN_PW = #admin_pw#
+	</select>
+	
+	<select id="getDoctorInfo" resultClass="DoctorVo" parameterClass="Integer">
+		SELECT 	* 
+		FROM 	DOCTOR 
+		WHERE 	DOCTOR_NUM = #doctor_num#
+	</select>
+	
+	<select id="getAdminInfo" resultClass="AdminVo" parameterClass="String">
+		SELECT 	* 
+		FROM 	ADMINISTRATOR 
+		WHERE 	ADMIN_ID = #admin_id#
+	</select>
+	
+	<select id="getFindId" resultClass="String" parameterClass="PatientVo">
+		SELECT 	PA_ID 
+		FROM 	PATIENT 
+		WHERE 	PA_NAME = #pa_name# 
+		AND 	PA_REG1 = #pa_reg1# 
+		AND 	PA_EMAIL = #pa_email#
+	</select>
+	
+	<select id="getFindPw" resultClass="String" parameterClass="PatientVo">
+		SELECT 	PA_PW 
+		FROM 	PATIENT 
+		WHERE 	1=1
+		AND 	PA_ID = #pa_id# 
+		AND 	PA_NAME = #pa_name# 
+		AND 	PA_REG1 = #pa_reg1#
+	</select>
+	
+	<select id="checkPatientForId" resultClass="Integer" parameterClass="PatientVo">
+		SELECT 	COUNT(*) 
+		FROM 	PATIENT 
+		WHERE 	1=1
+		AND 	PA_NAME = #pa_name# 
+		AND 	PA_REG1 = #pa_reg1# 
+		AND 	PA_EMAIL = #pa_email#
+	</select>
+	
+	<select id="checkPatientForPw" resultClass="Integer" parameterClass="PatientVo">
+		SELECT 	COUNT(*) 
+		FROM 	PATIENT 
+		WHERE 	PA_ID = #pa_id# 
+		AND 	PA_NAME = #pa_name# 
+		AND 	PA_REG1 = #pa_reg1# 
+		AND 	PA_EMAIL = #pa_email#
+	</select>
+
+</sqlMap>	

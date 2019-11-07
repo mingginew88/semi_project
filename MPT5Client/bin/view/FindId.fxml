@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="650.0" prefWidth="440.0" style="-fx-border-color: #3C5A91; -fx-border-width: 3px; -fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.FindIdController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="244.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+            <Image url="@img/mainlogo.jpg" />
+            </image>
+            </ImageView>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="52.0" prefWidth="434.0" spacing="10.0">
+         <children>
+            <ImageView fitHeight="60.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/findidd.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="27.0" prefWidth="139.0" text="아이디 찾기" textFill="#3c5a91">
+               <font>
+                  <Font name="Florencesans SC Rev Bold Italic" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="434.0">
+         <children>
+            <JFXTextField fx:id="txtName" focusColor="#3c5a91" prefHeight="23.0" prefWidth="180.0" promptText="이름" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="100.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="434.0">
+         <children>
+            <JFXTextField fx:id="txtRegno1" focusColor="#3c5a91" prefHeight="23.0" prefWidth="180.0" promptText="주민번호앞자리" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="100.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="434.0">
+         <children>
+            <JFXTextField fx:id="txtEmail" focusColor="#3c5a91" prefHeight="23.0" prefWidth="180.0" promptText="이메일" />
+            <JFXButton fx:id="btnSend" buttonType="RAISED" onAction="#sendId" style="-fx-border-width: 2px; -fx-border-color: #3C5A91;" text="전송" textFill="#3c5a91">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets left="100.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="65.0" prefWidth="434.0">
+         <children>
+            <JFXButton fx:id="btnFindPw" onAction="#FindPw" ripplerFill="#77a8fc" style="-fx-border-width: 2px; -fx-border-color: #3C5A91;" text="비밀번호 찾기" textFill="#3c5a91" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

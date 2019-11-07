@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="760.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" stylesheets="@searchData.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="searchData.SearchDataController">
+   <children>
+      <JFXTextField fx:id="searchData" focusColor="#3c5a91" layoutX="292.0" layoutY="27.0" prefHeight="50.0" prefWidth="739.0" promptText="검색할 내용을 입력하세요" unFocusColor="WHITE" />
+      <JFXComboBox fx:id="cbdata" focusColor="#3c5a91" layoutX="185.0" layoutY="27.0" prefHeight="50.0" prefWidth="93.0" promptText="분류명" unFocusColor="WHITE" />
+      <TableView fx:id="tabledata" layoutX="54.0" layoutY="89.0" prefHeight="583.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" stylesheets="@searchData.css" />
+      <ImageView cache="true" cacheHint="QUALITY" depthTest="ENABLE" fitHeight="37.0" fitWidth="42.0" layoutX="990.0" layoutY="39.0" onMouseClicked="#getSearchData" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/search.png" />
+         </image>
+      </ImageView>
+      <Pagination fx:id="pagination" layoutX="-3.0" layoutY="681.0" prefHeight="50.0" prefWidth="1214.0" />
+   </children>
+</AnchorPane>

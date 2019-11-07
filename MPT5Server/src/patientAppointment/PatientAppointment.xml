@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="patientAppointment">
+
+<typeAlias alias="appointVO" type="VO.AppointmentVO"/>
+<typeAlias alias="deptVO" type="VO.DepartmentVO"/>
+<typeAlias alias="docVO" type="VO.DoctorVO"/>
+
+<insert id="addVSAppoint" parameterClass="appointVO" >
+	insert into appointment (appt_num, appt_date, pa_id, doctor_num, appt_kind) values(appt_seq.nextVal, #appt_date#, #pa_id#, #doctor_num#, #appt_kind#)
+	
+</insert>
+
+<select id="getDeptList" resultClass="deptVO">
+select * from department
+</select>
+
+<select id="getDocList" parameterClass="int" resultClass="docVO">
+select * from doctor where dept_num = #dept_num#
+</select>
+
+<select id="getDate" parameterClass="int" resultClass="String">
+ select to_char(appt_date,'YYYYMMDDHH24MISS')sys_date24 from appointment where doctor_num =#doctor_num#
+</select>
+
+<select id="getPaName" parameterClass="String" resultClass="String">
+select pa_name from patient where pa_id=#pa_id#
+</select>
+
+
+
+	
+</sqlMap>

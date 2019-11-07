@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Notice">
+	<typeAlias alias="nvo" type="VO.NoticeVO"/>
+	<typeAlias alias="adminVO" type="VO.AdminisratorVO"/>
+	
+	<!-- 공지사항작성 -->
+	<insert id="insertNotice" parameterClass="nvo">
+		INSERT INTO NOTICE(NOTICE_NUM
+						  ,NOTICE_TITLE
+						  ,NOTICE_CONT
+						  ,NOTICE_DATE
+						  ,NOTICE_WRITER
+						  ,BOARD_NUM
+						  ,ADMIN_ID
+						  )
+					VALUES(notice_num.nextVal
+						  ,#notice_title#
+						  ,#notice_cont#
+						  ,sysdate
+						  ,#notice_writer#
+						  ,1
+						  ,#admin_id#
+						  )
+	</insert>
+
+	<!-- 공지사항수정 -->
+	<update id="updateNotice" parameterClass="nvo">
+		UPDATE 	NOTICE 
+		SET 	NOTICE_TITLE = #notice_title#
+				,NOTICE_CONT = #notice_cont# 
+		WHERE 	NOTICE_NUM = #notice_num#
+	</update>
+	
+	<!--  -->
+	<delete id="deleteNotice" parameterClass="integer">
+		DELETE 
+		FROM 	NOTICE 
+		WHERE 	NOTICE_NUM = #notice_num#
+	</delete>
+	
+	<select id="getAllNotice" resultClass="nvo">
+		SELECT 	* 
+		FROM 	NOTICE
+	</select>
+	
+	<select id="searchNotice" resultClass="nvo" parameterClass="String">
+		SELECT 	* 
+		FROM 	NOTICE
+		WHERE 	NOTICE_TITLE like '%' || #notice_title# || '%'
+	</select>
+
+	<!-- 관리자 정보 가져 오기 -->
+	<select id="getAdmin" resultClass="adminVO" parameterClass="String">
+		SELECT  * 
+		FROM    ADMINISTRATOR 
+		WHERE   ADMIN_ID like '%' || #admin_id# || '%'
+	</select>
+	
+	<!-- 관리자 확인용 -->
+	<select id="checkAdmin" resultClass="adminVO" parameterClass="String">
+		SELECT  * 
+		FROM    ADMINISTRATOR 
+		WHERE   ADMIN_ID like '%' || #admin_id# || '%'
+	
+	</select>
+	
+	
+</sqlMap>
+
+
+
+
+
+
+
+
+
+

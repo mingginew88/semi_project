@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="adminDB">
+	<typeAlias alias="doctorVO" type="VO.DoctorVO"/>
+	<typeAlias alias="mediVO" type="VO.MedicineVO"/>
+	<typeAlias alias="vcVO" type="VO.VisitclinicVO"/>
+	<typeAlias alias="msgVO" type="VO.MessageVO"/>
+	<typeAlias alias="scheVO" type="VO.ScheduleVO"/>
+
+	<!-- 약 리스트  -->
+	<select id="getAllMedi" resultClass="mediVO">
+		select * from medicine
+	</select>
+	
+	<!-- 약 검색 -->
+	<select id="searchMedi" parameterClass="String" resultClass="mediVO">
+		select * from medicine where medi_name like '%' || #medi_name# || '%'
+	</select>
+	
+	<!-- 약 추가  -->
+	<insert id="addMedi" parameterClass="mediVO">
+	insert into medicine (medi_code, medi_name, medi_category, medi_pms, medi_dose) values(#medi_code#, #medi_name#, #medi_category#, #medi_pms#, #medi_dose#)
+	</insert>
+	
+	<!-- 약 삭제 -->
+	<delete id="deleteMedi" parameterClass="int">
+	delete from medicine where medi_code=#medi_code# 
+	</delete>
+	
+	<!-- 방문 상담 리스트 -->
+	<select id="getVCList" resultClass="vcVO">
+	select * from visitclinic
+	</select>
+	
+	<!-- 방문 상담 내역 검색 -->
+	<select id="searchPaVs" parameterClass="map" resultClass="vcVO">
+	select * from visitclinic where $searchField$ = (select pa_id from patient where pa_name=#pa_name#)
+	</select>
+	
+	<select id="searchDocvs" parameterClass="map" resultClass="vcVO">
+	select * from visitclinic where $searchField$ = (select doctor_num from patient where doctor_name=#doctor_name#)
+	</select>
+	
+	<select id="searchContVs" parameterClass="map" resultClass="vcVO">
+		select * from visitclinic 
+			where $searchField$ like '%' || #searchData# || '%'
+	</select>
+	
+	<select id="searchDateVS" parameterClass="map" resultClass="vcVO">
+		select * from visitclinic
+			where $searchField$ like '%' || #searchData# || '%'
+	</select>
+	
+	<!-- 메세지 리스트  -->
+	<select id="getMsgList" resultClass="msgVO">
+	select * from message
+	</select>
+	
+	<!-- 의사 보낸 메시지 검색 -->
+	<select id="searchSdMsg" parameterClass="String" resultClass="msgVO">
+	select * from message where msg_sd = (select doctor_num from doctor where doctor_name=#doctor_name#)
+	</select>
+	<!-- 받은 메세지 검색 -->
+	<select id="searchRcMsg" parameterClass="String" resultClass="msgVO">
+	select * from message where msg_rc =(select doctor_num from doctor where doctor_name=#doctor_name#)
+	</select>
+	
+	<delete id="delecteMsg" parameterClass="int">
+	delete * from message where msg_num=#msg_num#
+	</delete>
+	
+	<!-- 의사 일정 -->
+	<select id="getScheList" resultClass="scheVO">
+	select * from schedule
+	</select>
+	
+	<!-- 해당 의사의 일정 검색 -->
+	<select id="searchDocSche" parameterClass="String" resultClass="scheVO">
+	select * from schedule where doctor_num = (select doctor_num from doctor where doctor_name=#doctor_name#)
+	</select>
+	
+	
+	
+	
+	
+	
+</sqlMap>	

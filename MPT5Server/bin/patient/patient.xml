@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="Patient">
+	<typeAlias alias="patientVo" type="VO.PatientVO"/>
+	<typeAlias alias="apVo" type="VO.AppointmentVO"/>
+	
+	<update id="updatePatientInfo" parameterClass="patientVo">
+		update patient set pa_pw = #pa_pw#, pa_addr = #pa_addr#, pa_email = #pa_email#, pa_tel = #pa_tel# where pa_id = #pa_id#
+	</update>
+	
+	<delete id="deletePatientInfo" parameterClass="String">
+		delete from patient where pa_id = #pa_id# 
+	</delete>
+	
+	<select id="selectPatientInfoName" parameterClass="String" resultClass="patientVo">
+		select * from patient where pa_name = #pa_name#
+	</select>
+	
+	<select id="selectPatientInfoAll" resultClass="patientVo">
+		select * from patient;
+	</select>
+	
+	<select id="searchPaAppt" parameterClass="String" resultClass="apVo">
+		select * from appointment where pa_id=#pa_id#
+	</select>
+</sqlMap>

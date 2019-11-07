@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<properties resource="SqlMapConfig.properties" />
+	
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" maxRequests="32" maxSessions="10"
+		maxTransactions="5" useStatementNamespaces="true" />
+
+
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}" />
+			<property name="JDBC.ConnectionURL" value="${url}" />
+			<property name="JDBC.Username" value="${username}" />
+			<property name="JDBC.Password" value="${password}" />
+		</dataSource>
+	</transactionManager>
+	
+	<sqlMap resource="login/login.xml" />
+	<sqlMap resource="msg/msg.xml" />
+	<sqlMap resource="patient/patient.xml" />
+	<sqlMap resource="searchData/searchData.xml" />
+	<sqlMap resource="admin/memList/memberAdmin.xml" /> 
+	<sqlMap resource="admin/adminDB/adminDB.xml" /> 
+	<sqlMap resource="doctorVisitClinic/doctorVisitClinic.xml"/>
+	<sqlMap resource="board/notice/Notice.xml" />
+	<sqlMap resource="board/qna/QnA.xml" />
+	<sqlMap resource="schedule/schedule.xml" />
+	<sqlMap resource="doctor/doctorMain.xml"/>
+	<sqlMap resource="appointment/appointment.xml" />
+	<sqlMap resource="admin/AdminMain.xml" />
+	<sqlMap resource="examination/examination.xml" />
+	<sqlMap resource="disease/disease.xml"/>
+	<sqlMap resource="survey/survey.xml"/>
+	<sqlMap resource="patientAppointment/PatientAppointment.xml"/>
+	
+</sqlMapConfig>

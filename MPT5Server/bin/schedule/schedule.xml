@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="schedule">
+	<typeAlias alias="scheduleVo" type="VO.ScheduleVO"/>
+	
+	<select id="getAllSchedule" resultClass="scheduleVo" parameterClass="Integer">
+		SELECT SCHE_KIND
+			  ,SCHE_NAME
+			  ,TO_CHAR(SCHE_STARTDATE, 'YY/MM/DD') AS SCHE_STARTDATE
+			  ,SCHE_CONT
+			  ,SCHE_COLOR
+			  ,SCHE_NUM 
+		FROM  SCHEDULE
+		WHERE DOCTOR_NUM = #doctor_num#
+	</select>
+	
+	<insert id="addSchedule" parameterClass="scheduleVo">
+		INSERT INTO SCHEDULE(
+		                     SCHE_KIND
+		                     ,SCHE_NAME
+		                     ,SCHE_STARTDATE
+		                     ,SCHE_CONT
+		                     ,DOCTOR_NUM
+		                     ,SCHE_NUM
+		                     ,SCHE_COLOR
+		                     )
+				       VALUES(
+				              #sche_kind#
+				              ,#sche_name#
+				              ,#sche_startdate#
+				              ,#sche_cont#
+				              ,#doctor_num#
+				              ,SCHENUM_SEQ.nextVal
+				              ,#sche_color#
+				              )
+	</insert>
+	
+	<delete id="deleteSchedule" parameterClass="Integer">
+		DELETE FROM  SCHEDULE 
+			   WHERE 1=1
+			   AND   SCHE_NUM = #sche_num#			
+	</delete>
+	
+	<update id="updateSchedule" parameterClass="scheduleVo">
+		UPDATE SCHEDULE SET 
+			   SCHE_NAME = #sche_name# 
+			   ,SCHE_KIND = #sche_kind#
+			   ,SCHE_STARTDATE = #sche_startdate#
+			   ,SCHE_CONT = #sche_cont#
+				WHERE SCHE_NUM = #sche_num#
+	</update>
+	
+	<select id="getSchedule" resultClass="scheduleVo" parameterClass="Integer">
+		SELECT * 
+		FROM   SCHEDULE 
+		WHERE  1=1
+		AND    SCHE_NUM = #sche_num#
+	</select>
+	
+	<select id="getScheduleFromDate" resultClass="scheduleVo" parameterClass="scheduleVo">
+		SELECT 	* 
+		FROM   	SCHEDULE 
+		WHERE  	1=1
+		AND 	TO_CHAR(SCHE_STARTDATE,'YYYY/MM/DD') = #sche_startdate# 
+		AND 	DOCTOR_NUM = #doctor_num#
+<!-- 		select * from schedule where sche_startdate = to_date(#sche_startdate#) and doctor_num = #doctor_num# -->
+	</select>
+	
+	<delete id="deleteAllSchedule" parameterClass="Integer">
+		DELETE 	FROM SCHEDULE
+		WHERE 	DOCTOR_NUM = #doctor_num#
+	</delete>
+	
+	<select id="getSelectedSchedule" resultClass="scheduleVo" parameterClass="Map">
+		SELECT 	* 
+		FROM 	SCHEDULE
+		<iterate prepend="WHERE SCHE_KIND IN " open="(" close=")" conjunction=", " property="sche_kind" >
+            #sche_kind[]# 
+       	</iterate>
+		AND TO_CHAR(SCHE_STARTDATE, 'YYYY/MM/DD') = #sche_startdate[0]#
+		 
+<!-- 		WHERE SCHE_COLOR IN('A5D6A7','FFCDD2') -->
+<!-- 		WHERE 	SCHE_KIND = #sche_kind# -->
+	</select>
+	
+
+	
+	
+	
+	
+	
+</sqlMap>

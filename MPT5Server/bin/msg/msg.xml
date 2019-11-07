@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="msg">
+	<typeAlias alias="msgVO" type="VO.MessageVO"/>
+	<typeAlias alias="docVO" type="VO.DoctorVO"/>
+	
+	<select id="getAllMsg" resultClass="msgVO" parameterClass="Integer">
+		select * from message where msg_rc=#login_Id#
+	</select>
+	
+	<select id="getAllDoctor" resultClass="docVO">
+		select * from doctor
+	</select>
+	
+	<select id="searchDoctor" resultClass="docVO" parameterClass="Integer">
+		select * from doctor where doctor_num=#doctor_num#
+	</select>
+	
+	<select id="searchDoctorName" resultClass="String" parameterClass="Integer">
+		select doctor_name from doctor where doctor_num=#doctor_num#
+	</select>
+	
+	<insert id="insertMsg" parameterClass="msgVO">
+		insert into message 
+		values(msg_req.nextval, #msg_sd#, #msg_rc#, #msg_cont#, sysdate)
+	</insert>
+	
+	<select id="getAllReMsg" resultClass="msgVO" parameterClass="Integer">
+		select * from message where msg_sd = #login_Id#
+	</select> 
+</sqlMap>

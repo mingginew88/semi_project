@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="clinic.C_DoctorClinicMainController">
+   <children>
+      <VBox prefHeight="800.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #3C5A91;">
+               <children>
+                  <Label text="원격 진료" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="openClinicWebBtn" onAction="#openClinicWebBtnOnClick" text="Connect CDNHospital Web" />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="ClinicStartBtn" onAction="#ClinicStartBtnOnClick" text="Chat Clinic START" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <VBox prefHeight="800.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #3C5A91;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXTextField fx:id="patientTf" focusColor="#e31b12" prefHeight="23.0" prefWidth="250.0" promptText="환자 검색" unFocusColor="#3c5a91">
+                     <HBox.margin>
+                        <Insets left="45.0" right="20.0" />
+                     </HBox.margin>
+                  </JFXTextField>
+                  <JFXButton fx:id="paSerchbtn" onAction="#paSerchbtnOnClick" style="-fx-background-color: #3C5A91;" text="검색" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="206.0" prefWidth="600.0">
+               <children>
+                  <TableView fx:id="resultTable" prefHeight="205.0" prefWidth="274.0">
+                    <columns>
+                      <TableColumn fx:id="paIdCol" prefWidth="68.0" text="아이디" />
+                      <TableColumn fx:id="paNameCol" prefWidth="119.0" text="이름" />
+                        <TableColumn fx:id="paPNCol" prefWidth="86.0" text="전화번호" />
+                    </columns>
+                  </TableView>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXTextField fx:id="chidTF" focusColor="#f50a0a" prefWidth="250.0" promptText="ChannelID" unFocusColor="#6482b9" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXTextField fx:id="ipAddrTF" focusColor="#e31b12" prefWidth="250.0" promptText="IP주소" unFocusColor="#3c5a91" />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXTextField fx:id="PortNumTF" focusColor="#e31b12" prefWidth="250.0" promptText="Port번호" unFocusColor="#3c5a91" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="sendInfoBtn" onAction="#sendInfoBtnOnClick" style="-fx-background-color: #3C5A91;" text="정보전송" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children></HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

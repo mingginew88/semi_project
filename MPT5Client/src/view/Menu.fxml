@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="770.0" prefWidth="316.0" style="-fx-border-color: #6482B9;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="CENTER" contentDisplay="TOP" prefHeight="35.0" prefWidth="321.0" style="-fx-background-color: #6482B9; -fx-text-fill: #ffffff;" text="예약" />
+   </children>
+</VBox>

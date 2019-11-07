@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="630.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.adminDB.AdminMsgController">
+   <children>
+      <HBox alignment="CENTER" layoutX="270.0" prefHeight="70.0" prefWidth="1200.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXComboBox fx:id="cb" focusColor="#3c5a91" prefHeight="29.0" prefWidth="85.0" />
+            <JFXTextField fx:id="mediFLd" focusColor="#f87909" prefHeight="29.0" prefWidth="296.0" promptText="의사이름" unFocusColor="#3c5a91" />
+            <JFXButton fx:id="searchBtn" onAction="#search" style="-fx-background-image: ../view/img/search2.png;" />
+         </children>
+      </HBox>
+      <VBox layoutX="455.0" layoutY="133.0" prefHeight="560.0" prefWidth="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <TableView fx:id="table" prefHeight="500.0" prefWidth="1200.0">
+              <columns>
+                <TableColumn fx:id="numCol" minWidth="90.0" prefWidth="90.0" style="-fx-column-color: #3C5A91;" text="Number" />
+                <TableColumn fx:id="sdCol" minWidth="150.0" prefWidth="150.0" style="-fx-column-color: #3C5A91;" text="Sender" />
+                  <TableColumn fx:id="rcCol" minWidth="150.0" prefWidth="150.0" style="-fx-column-color: #3C5A91;" text="Reciever" />
+                  <TableColumn fx:id="contentCol" minWidth="650.0" prefWidth="650.0" style="-fx-column-color: #3C5A91;" text="Content" />
+                  <TableColumn fx:id="dateCol" minWidth="160.0" prefWidth="160.0" style="-fx-column-color: #3C5A91;" text="date" />
+              </columns>
+            </TableView>
+            <Pagination fx:id="pg" prefHeight="60.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

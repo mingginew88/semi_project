@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.memList.MemListController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="1200.0" spacing="10.0" style="-fx-background-color: #3C5A91;">
+         <children>
+            <Label text="회원 관리" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1200.0" spacing="15.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="274.0">
+               <children>
+                  <JFXComboBox fx:id="combo1" onAction="#selectMemKind" prefHeight="29.0" prefWidth="87.0" />
+               </children></HBox>
+            <JFXComboBox fx:id="combo2" focusColor="#3c5a91" prefHeight="29.0" prefWidth="119.0" />
+            <JFXTextField fx:id="txtFld" focusColor="#3c5a91" prefWidth="280.0" />
+            <JFXButton fx:id="btnSearch" buttonType="RAISED" onAction="#search" prefHeight="33.0" prefWidth="70.0" style="-fx-background-color: #3C5A91;" text="검색" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <HBox prefHeight="80.0" prefWidth="182.0" />
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="btnAdd" buttonType="RAISED" onAction="#addMember" text="New" textFill="#3c5a91">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox prefHeight="500.0" prefWidth="1200.0">
+         <children>
+            <TableView fx:id="table" onMouseClicked="#showDetails" prefHeight="500.0" prefWidth="1200.0">
+              <columns>
+                <TableColumn fx:id="idCol" prefWidth="241.0" text="ID" />
+                <TableColumn fx:id="nameCol" prefWidth="229.0" text="이름" />
+                  <TableColumn fx:id="genderCol" prefWidth="79.0" text="성별" />
+                  <TableColumn fx:id="regCol" prefWidth="263.0" text="생년월일" />
+                  <TableColumn fx:id="addrCol" prefWidth="387.0" text="주소" />
+              </columns>
+            </TableView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: #3C5A91;">
+         <children>
+            <Pagination fx:id="pg" prefHeight="200.0" prefWidth="200.0" styleClass=".pagination .pagination-control {    -fx-background-color: white;    }" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

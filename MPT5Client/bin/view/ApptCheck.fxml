@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="650.0" prefHeight="650.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patientAppointment.ApptCheckController">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="70.0" prefWidth="650.0" style="-fx-background-color: #3C5A91;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="check" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding></HBox>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="650.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <Label text="Appointment Content">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </HBox>
+      <VBox fx:id="vbox" alignment="TOP_CENTER" layoutX="50.0" layoutY="150.0" prefHeight="434.0" prefWidth="525.0" spacing="10.0" style="-fx-background-image: 13.clipboard.png;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="150.0">
+         <children>
+            <JFXTextField fx:id="apptDateFld" maxWidth="300.0" prefHeight="40.0" prefWidth="525.0" promptText="예약날짜" unFocusColor="#f28126" />
+            <JFXTextField fx:id="paNameFld" maxWidth="300.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="환자 이름" unFocusColor="#f28126" />
+            <JFXTextField fx:id="docName" maxWidth="300.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="의사 이름" unFocusColor="#f28126" />
+            <JFXTextField fx:id="kindFld" maxWidth="300.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="예약 종류" unFocusColor="#f28126" />
+            <JFXTextField fx:id="ChIdFLd" maxWidth="300.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="webChID" unFocusColor="#f28126" />
+            <JFXTextField fx:id="portFld" maxWidth="300.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="port" unFocusColor="#f28126" />
+            <JFXTextField fx:id="IPFld" maxWidth="300.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="IP주소" unFocusColor="#f28126" />
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </VBox>
+      <JFXButton fx:id="chkBtn" layoutX="279.0" layoutY="592.0" onAction="#checkAppt" text="CHECK" textFill="#3c5a91" />
+   </children>
+</AnchorPane>

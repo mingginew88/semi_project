@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Question">
+	<typeAlias alias="qvo" type="VO.QuestionVO"/>
+	<typeAlias alias="PatientVO" type="VO.PatientVO"/>
+	<typeAlias alias="AnswerVO" type="VO.AnswerVO"/>
+	
+	<insert id="insertAnswer" parameterClass="AnswerVO">
+		insert into ANSWER(ANSWER_NUM
+						  ,ANSWER_TITLE
+						  ,ANSWER_DATE
+						  ,ANSWER_CONT
+						  ,BOARD_NUM
+						  ,DOCTOR_NUM)
+					VALUES(#answer_num#
+						  ,'답변'
+						  ,sysdate
+						  ,#answer_cont#
+						  ,2
+						  ,#doctor_num#
+						  )
+	</insert>
+	
+	<insert id="insertQnA" parameterClass="qvo">
+		INSERT INTO QUESTION(QUE_NUM
+							,QUE_TITLE
+							,QUE_DATE
+							,QUE_CONT
+							,BOARD_NUM
+							,PA_ID
+							)
+					VALUES (question_num.nextVal
+							,#que_title#
+							,sysdate
+							,#que_cont#
+							,2
+							,#pa_id#
+							)
+	</insert>
+
+	<update id="updateQnA" parameterClass="qvo">
+		UPDATE 	QUESTION 
+		SET 	QUE_TITLE = #que_title#
+			   ,QUE_CONT = #que_cont# 
+		WHERE 	QUE_NUM = #que_num#
+	</update>
+	
+	<update id="updateAnswer" parameterClass="AnswerVO">
+		UPDATE ANSWER
+		SET    ANSWER_CONT = #answer_cont#
+	    WHERE  ANSWER_NUM = #answer_num#
+	</update>
+	
+	<select id="getAnswerCont" resultClass="AnswerVO" parameterClass="integer">
+		SELECT *
+		FROM   ANSWER
+		WHERE  ANSWER_NUM = #answer_num#
+	</select>
+	
+	<delete id="deleteQnA" parameterClass="integer">
+		DELETE 
+		FROM 	QUESTION 
+		WHERE 	QUE_NUM = #que_num#
+	</delete>
+	
+	<select id="getAllQnA" resultClass="qvo">
+		SELECT 	* 
+		FROM 	QUESTION
+	</select>
+	
+	<select id="searchQnA" resultClass="qvo" parameterClass="String">
+		SELECT 	* 
+		FROM 	QUESTION
+		WHERE 	QUE_TITLE like '%' || #que_title# || '%'
+	</select>
+
+	<!-- 환자 정보 가져오기 -->
+	<select id="getAllPatient" resultClass="PatientVO" parameterClass="String" >
+		select * from patient 
+		where pa_id like '%' || #pa_id# || '%'
+	</select>
+	
+	<select id="searchAnswerCont" resultClass="AnswerVO" parameterClass="Integer">
+		select *
+		from answer where answer_num=#answer_num#
+	</select>
+	
+</sqlMap>
+
+
+
+
+
+
+
+
+
+

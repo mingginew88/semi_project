@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- 
+	namespace속성 : 아래에서 작성한 SQL문을 호출할 때 같이 사용된다. 
+ -->	
+<sqlMap namespace="memberList">
+	<!-- 
+	이 문서에서만 사용될 alias를 지정할 수 있다.
+	<typeAlias .... />
+	 -->
+	<typeAlias alias="patientVo" type="VO.PatientVO"/>
+	<typeAlias alias="doctorVo" type="VO.DoctorVO"/>
+
+	
+	<!-- insert 연습 -->
+	<insert id="insertPatient" parameterClass="patientVo">
+		insert into patientWWW
+		values ( #pa_id#, #pa_name#,#pa_gen#, #pa_pw#, #pa_reg1#, #pa_reg2#, #pa_addr#,#pa_email# #pa_tel#)
+	</insert>
+	
+	<insert id="insertDoctor" parameterClass="doctorVo">
+		insert into doctor
+		values ( #doctor_num#, #doctor_name#,#doctor_gen#, #doctor_pw#, #doctor_reg1#, #doctor_reg2#, #doctor_addr#,#doctor_email# #dept_num#)
+	</insert>
+
+
+	<!-- update 연습 -->
+	<update id="updatePatient" parameterClass="patientVo" >
+		update patient set pa_pw=#pa_pw#, 
+			pa_addr=#pa_addr#, pa_email=#pa_email# 
+		where pa_id=#pa_id#
+	</update>
+	
+	<update id="updateDoctor" parameterClass="doctorVo" >
+		update doctor set doctor_pw=#doctor_pw#, 
+			docor_addr=#doctor_addr#, doctor_email=#doctor_email#, dept_num=#dept_num#
+		where doctor_num=#doctor_num#
+	</update>
+	
+	
+	<!-- delete 연습 -->
+	<!-- 
+		parameterClass에 설정되는 값이 단일값(즉, 1개의 데이터)이면
+		SQL문에 이 값을 나타내는 변수는 그 이름이 특별히 정해지지
+		않았다. (즉, 사용자가 임의로 지정할 수 있다.)	
+	 -->
+	<delete id="deletePatient" parameterClass="string">
+		<!-- delete from mymember where mem_id = #mem_id# -->
+		delete from patient where pa_id = #pa_id#
+	</delete>
+	
+	<!-- select 연습 -->
+	
+	<!-- 조건이 없는 select문 ==> parameterClass가 필요 없다. -->
+	<!-- 
+		resultClass에는 select한 결과 중 1개의 레코드가 저장될 수
+		있는 객체를 지정한다.
+	-->
+	<select id="getAllPatient" resultClass="patientVo">
+		select * from patient
+	</select>
+	<select id="getAllDoctor" resultClass="doctorVo">
+		select * from doctor
+	</select>
+	
+	<select id="getPatient" parameterClass="string" resultClass="patientVo">
+		select * from patientVo
+		where pa_id=#pa_id#
+	</select>
+	
+	
+	<!-- 회원Id가 같은 인원수를 검색하는 select문 -->
+	<select id="getCountPatient" parameterClass="string" resultClass="int">
+		select count(*) from patient
+		where pa_id = #pa_id#
+	</select>
+	
+	<!-- 회원 검색하기 -->
+	<!-- 
+		parameterClass에 지정된 값을 쿼리문의 컬럼명으로 사용하려면
+		컬럼명이 저장된 변수명 앞뒤에 #기호가 아닌 $기호를 
+		사용해야 한다.
+	 -->
+	<select id="getSearchPatient" parameterClass="map" resultClass="patientVo">
+		select * from patient 
+			where $searchField$ = #searchData#
+	</select>
+	
+	<select id="getAddrSearchPatient" parameterClass="map" resultClass="patientVo">
+		select * from patient
+			where $searchField$ like '%' || #searchData# || '%'
+	</select>
+	<select id="getRegSearchPatient" parameterClass="map" resultClass="patientVo">
+		select * from patient
+			where $searchField$ like '%' || #searchData# || '%'
+	</select>
+	
+	
+	<select id="getSearchDoctor" parameterClass="map" resultClass="doctorVo">
+	select * from doctor where $searchField$ = #searchData#
+	</select>
+	
+	<select id="getAddrSearchDoctor" parameterClass="map" resultClass="doctorVo">
+	select * from doctor where $searchField$ like '%' || #searchData# || '%'
+	</select>
+	<select id="getRegSearchDoctor" parameterClass="map" resultClass="doctorVo">
+	select * from doctor where $searchField$ like '%' || #searchData# || '%'
+	</select>
+
+
+</sqlMap>
+
+
+
+
+
+
+
+
+
+

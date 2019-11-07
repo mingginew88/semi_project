@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="searchData">
+	<typeAlias alias="paVO" type="VO.PatientVO"/>
+	<typeAlias alias="mediVO" type="VO.MedicineVO"/>
+	<typeAlias alias="vcVO" type="VO.VisitclinicVO"/>
+	
+	<select id="getAllPa" resultClass="paVO" parameterClass="Integer">
+		SELECT *
+		FROM PATIENT 
+		WHERE PA_ID IN(SELECT 	DISTINCT(PA_ID) 
+					   FROM 	VISITCLINIC 
+					   WHERE  	DOCTOR_NUM = #doctor_num#)
+	</select>
+	
+	<select id="getAllMedi" resultClass="mediVO">
+		SELECT * 
+		FROM MEDICINE
+	</select>
+	
+	<select id="getPaRecentVSTClinicDate" parameterClass="String" resultClass="Date">
+		select max(vstclinic_date) from visitclinic where pa_id=(select pa_id from patient where pa_id=#pa_id#)
+	</select>
+	
+	<select id="searchPa" parameterClass="String" resultClass="paVO">
+		select * from patient where pa_name like '%' || #pa_name# || '%'
+	</select>
+	
+	<select id="searchMedi" parameterClass="String" resultClass="mediVO">
+		select * from medicine where medi_name like '%' || #medi_name# || '%'
+	</select>
+	
+<!-- 	<select id="getPaVSTClinicDate" parameterClass="Map" resultClass="String"> -->
+<!-- 		SELECT 	SUBSTR(TO_CHAR(VSTCLINIC_DATE), 0, 8) -->
+<!-- 		FROM 	VISITCLINIC  -->
+<!-- 		WHERE 	PA_ID=(	SELECT PA_ID  -->
+<!--               			FROM PATIENT  -->
+<!--               			WHERE PA_ID=( SELECT 	DISTINCT(#pa_id#)  -->
+<!-- 					   				  FROM 		VISITCLINIC  -->
+<!-- 					  				  WHERE  	DOCTOR_NUM = TO_NUMBER(#doctor_num#) -->
+<!-- 					  				 ) -->
+<!--               		   ) -->
+<!-- 	</select> -->
+	
+	<select id="getPaVSTClinicDate" parameterClass="Map" resultClass="vcVO">
+		SELECT 	*
+		FROM 	VISITCLINIC 
+		WHERE 	PA_ID=(	SELECT PA_ID 
+              			FROM PATIENT 
+              			WHERE PA_ID=( SELECT 	DISTINCT(#pa_id#) 
+					   				  FROM 		VISITCLINIC 
+					  				  WHERE  	DOCTOR_NUM = TO_NUMBER(#doctor_num#)
+					  				 )
+              		   )
+	</select>
+	
+</sqlMap>
+
+
+
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<AnchorPane maxHeight="650.0" maxWidth="450.0" minHeight="650.0" minWidth="450.0" prefHeight="650.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="14.0" prefHeight="70.0" prefWidth="450.0" style="-fx-background-color: #3c5a91;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="MyAppointInfo" textFill="WHITE" />
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+      <JFXTextField fx:id="numFld" layoutX="79.0" layoutY="176.0" prefHeight="30.0" prefWidth="365.0" promptText="number" unFocusColor="#38ada9" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="175.0" />
+      <JFXTextField fx:id="dateFld" layoutX="79.0" layoutY="235.0" prefHeight="30.0" prefWidth="365.0" promptText="date" unFocusColor="#38ada9" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="225.0" />
+      <JFXTextField fx:id="idFld" layoutX="71.0" layoutY="309.0" prefHeight="30.0" prefWidth="365.0" promptText="ID" unFocusColor="#38ada9" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="275.0" />
+      <JFXTextField fx:id="docFld" layoutX="62.0" layoutY="352.0" prefHeight="30.0" prefWidth="365.0" promptText="Doctor" unFocusColor="#38ada9" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="325.0" />
+      <JFXTextField fx:id="kindFld" layoutX="71.0" layoutY="410.0" prefHeight="30.0" prefWidth="365.0" promptText="kind" unFocusColor="#38ada9" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="375.0" />
+      <JFXTextField fx:id="chFld" layoutX="62.0" layoutY="466.0" prefHeight="30.0" prefWidth="365.0" promptText="channel" unFocusColor="#38ada9" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="425.0" />
+      <JFXTextField fx:id="portFld" layoutX="62.0" layoutY="509.0" prefHeight="30.0" prefWidth="365.0" promptText="port" unFocusColor="#38ada9" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="475.0" />
+      <JFXTextField fx:id="ipFld" layoutX="62.0" layoutY="564.0" prefHeight="30.0" prefWidth="365.0" promptText="IP" unFocusColor="#38ada9" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="525.0" />
+      <JFXComboBox fx:id="combo" layoutX="49.0" layoutY="117.0" prefWidth="365.0" promptText="예약 일정 날짜" unFocusColor="#38ada9" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="100.0" />
+   </children>
+</AnchorPane>

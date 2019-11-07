@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="patientClinic.C_PatientClinicMainController">
+   <children>
+      <VBox prefHeight="800.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #3C5A91;">
+               <children>
+                  <Label text="원격 진료" textFill="WHITE">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <JFXButton fx:id="openClinicWebBtn" onAction="#openClinicWebBtnOnClick" text="Connect CDNHospital Web" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <VBox prefHeight="800.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #3C5A91;" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXComboBox fx:id="apptDateCbx" prefHeight="23.0" prefWidth="282.0" promptText="예약 날짜" />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXTextField fx:id="docNameTf" prefHeight="23.0" prefWidth="282.0" text="의사 이름" />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXTextField fx:id="apptChIdTf" prefHeight="23.0" prefWidth="282.0" text="영상 진료 채널 아이디" />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXTextField fx:id="apptPortTf" prefHeight="23.0" prefWidth="282.0" text="채팅 진료 포트번호" />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXTextField fx:id="apptIpTf" prefHeight="23.0" prefWidth="282.0" text="채팅 진료 IP" />
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="ClinicStartBtn" onAction="#ClinicStartBtnOnClick" text="Chat Clinic START" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

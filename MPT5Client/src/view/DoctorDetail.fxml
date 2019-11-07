@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="440.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.memlist.DoctorDetailController">
+   <children>
+      <HBox alignment="BOTTOM_LEFT" layoutX="20.0" layoutY="14.0" prefHeight="100.0" prefWidth="440.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+            <Label text="의사" textFill="#3c5a91">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox alignment="TOP_CENTER" layoutX="81.0" layoutY="117.0" prefHeight="525.0" prefWidth="440.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="125.0">
+         <children>
+            <JFXTextField fx:id="idFld" focusColor="#f28126" maxHeight="40.0" maxWidth="300.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" promptText="아이디" unFocusColor="#3c5a91" />
+            <JFXTextField fx:id="nameFld" focusColor="#f28126" maxHeight="40.0" maxWidth="300.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" text="이름" unFocusColor="#3c5a91" />
+            <JFXPasswordField fx:id="pwFld" focusColor="#f28126" maxWidth="300.0" prefHeight="30.0" text="비밀번호" unFocusColor="#3c5a91" />
+            <JFXTextField fx:id="genFld" focusColor="#f28126" maxHeight="40.0" maxWidth="300.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" text="성별" unFocusColor="#3c5a91" />
+            <JFXTextField fx:id="regFld" focusColor="#f28126" maxHeight="40.0" maxWidth="300.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" text="주민등록번호" unFocusColor="#3c5a91" />
+            <JFXTextField fx:id="addrFld" focusColor="#f28126" maxHeight="40.0" maxWidth="300.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" text="주소" unFocusColor="#3c5a91" />
+            <JFXTextField fx:id="deptFld" focusColor="#f28126" maxHeight="40.0" maxWidth="300.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" text="소속부서" unFocusColor="#3c5a91" />
+            <JFXTextField fx:id="emailFld" focusColor="#f28126" maxHeight="40.0" maxWidth="300.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" text="이메일" unFocusColor="#3c5a91" />
+            <JFXButton fx:id="chkBtn" onAction="#check" text="확인" textFill="#f28126" />
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="78.0" layoutY="564.0" prefHeight="50.0" prefWidth="440.0" spacing="20.0" style="-fx-background-color: #3c5a91;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <children>
+            <JFXButton fx:id="editBtn" onAction="#edit" text="EDIT" textFill="WHITE" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

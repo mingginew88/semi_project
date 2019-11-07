@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="survey.SurveyController">
+   <children>
+      <Rating fx:id="ratingStar" layoutX="62.0" layoutY="51.0" prefHeight="33.0" prefWidth="180.0" />
+      <Label alignment="CENTER" prefHeight="39.0" prefWidth="300.0" style="-fx-background-color: #3c5a91;" text="평가하기" textFill="WHITE" />
+      <Label alignment="CENTER" layoutY="261.0" prefHeight="39.0" prefWidth="300.0" style="-fx-background-color: #3c5a91;" textFill="WHITE" />
+      <JFXTextArea fx:id="cont" layoutX="14.0" layoutY="115.0" prefHeight="134.0" prefWidth="272.0" promptText="리뷰 내용 작성 (생략 가능)" />
+      <Label layoutX="116.0" layoutY="93.0" text="grade : " />
+      <Label fx:id="grade" layoutX="161.0" layoutY="94.0" text="2.0" />
+      <JFXButton layoutX="210.0" layoutY="269.0" onMouseClicked="#btnsurvey" text="제출하기" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/White_check.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

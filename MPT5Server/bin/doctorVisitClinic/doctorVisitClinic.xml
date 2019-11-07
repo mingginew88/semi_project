@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="doctorVisitClinic">
+	<typeAlias alias="mediVO" type="VO.MedicineVO"/><!-- 의약품 -->
+	<typeAlias alias="vcVO" type="VO.VisitclinicVO"/> <!-- 방문진료 -->
+	<typeAlias alias="paVO" type="VO.PatientVO"/> <!-- 환자 -->
+	<typeAlias alias="docVO" type="VO.DoctorVO"/><!-- 의사 -->
+	<typeAlias alias="disVO" type="VO.DiseaseVO"/> <!-- 질병 -->
+	<typeAlias alias="appointVO" type="VO.AppointmentVO"/> <!-- 예약 -->
+	<typeAlias alias="preVO" type="VO.PrescriptionVO"/>  <!-- 처방 -->
+	<typeAlias alias="exVO" type="VO.ExaminationVO"/> <!-- 검사 -->
+	
+	<select id="getAllAppoint" parameterClass="Integer" resultClass="appointVO">
+		select * from appointment where doctor_num=#doctor_num# and to_char(appt_date, &apos;YYYYMMDD&apos;)=to_char(sysdate,&apos;YYYYMMDD&apos;)
+	</select>
+	
+	<select id="getPaInfo" parameterClass="String" resultClass="paVO">
+		select * from patient where pa_id=#pa_id#
+	</select>
+	
+	<select id="getPaEx" parameterClass="String" resultClass="exVO">
+		select * from examination where pa_id=#pa_id#
+	</select>
+	
+	<select id="getPaDis" parameterClass="String" resultClass="DisVO">
+		select * from disease where pa_id=#pa_id#
+	</select>
+	
+	<select id="getMedi" parameterClass="map" resultClass="mediVO">
+		select * from medicine where $searchField$ like '%'||#searchData#||'%' 
+	</select>
+	
+	<insert id="insertVisitClinic" parameterClass="vcVO">
+		insert into visitclinic
+		values(#clinic_num#, #vstclinic_cont#, #pa_id#, #doctor_num#, #appt_num#, sysdate)
+	</insert>
+	
+	<insert id="insertDis" parameterClass="disVO">
+		insert into disease
+		values(#dis_num#, #dis_name#, #dis_symp#, #pa_id#, #clinic_num#)
+	</insert>
+	
+	<insert id="insertpre" parameterClass="preVO">
+		insert into prescription
+		values(pre_seq.nextval, #presc_cont#, sysdate, #pa_id#, #doctor_num#, #clinic_num#, #dis_num#)
+	</insert>
+	
+	<select id="getVCMax" resultClass="Integer">
+		select max(clinic_num) from visitclinic
+	</select>
+	
+	<select id="getDisMax" resultClass="Integer">
+		select max(dis_num) from disease
+	</select>
+	
+	<select id="getDis" parameterClass="String" resultClass="DisVO">
+		select * from disease where pa_id = #pa_id#
+	</select>
+	
+	<select id="searchApptVC" parameterClass="Integer" resultClass="Integer">
+		select count(*) from visitclinic where appt_num=#appt_num#
+	</select>
+	
+	<select id="getPaVC" parameterClass="Integer" resultClass="vcVO">
+		select * from visitclinic where appt_num=#appt_num#
+	</select>
+	
+	<select id="getPaPresc" parameterClass="Integer" resultClass="PreVO">
+		select * from prescription where clinic_num=#clinic_num#
+	</select>
+	
+	<select id="getPaDisease" parameterClass="Integer" resultClass="disVO">
+		select * from disease where clinic_num = #clinic_num#
+	</select>
+	
+	<select id="getPaExam" parameterClass="Integer" resultClass="exVO">
+		select * from examination where clinic_num = #clinic_num#
+	</select>
+	
+	<insert id="insertExam" parameterClass="exVO">
+		insert into examination
+		values(#pa_id#, sysdate, #exam_cont#, exam_seq.nextval, #fever#,
+		#red_blood_cell#, #white_blood_cell#, #platelet#, #exam_bad1#, #exam_bad2#, 
+		#exam_bad3#, #doctor_num#,#clinic_num#)
+	</insert>
+	
+	<update id="updateVC" parameterClass="vcVo">
+		update visitclinic set vstclinic_cont=#vstclinic_cont#,
+							   vstclinic_date=sysdate
+		where clinic_num=#clinic_num#
+	</update>
+	
+	<update id="updatePresc" parameterClass="preVO">
+		update prescription set presc_cont=#presc_cont#,
+								presc_date=sysdate
+		where clinic_num=#clinic_num#
+	</update>	
+	
+	<update id="updateDisease" parameterClass="disVO">
+		update disease set dis_name=#dis_name#, dis_symp=#dis_symp#
+		where clinic_num=#clinic_num#
+	</update>
+	
+	<update id="updateExam" parameterClass="exVO">
+		update examination set exam_rec_date = sysdate,
+							   exam_cont=#exam_cont#,
+							   fever=#fever#,
+							   red_blood_cell=#red_blood_cell#,
+							   white_blood_cell=#white_blood_cell#,
+							   platelet=#platelet#,
+							   exam_bad1=#exam_bad1#,
+							   exam_bad2=#exam_bad2#,
+							   exam_bad3=#exam_bad3#,
+							   doctor_num=#doctor_num#,
+							   pa_id=#pa_id#
+		where clinic_num = #clinic_num#
+	</update>
+	
+</sqlMap>
